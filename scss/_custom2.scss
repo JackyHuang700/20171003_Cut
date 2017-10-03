@@ -1,0 +1,252 @@
+/**
+ * @author      OA Wu <comdan66@gmail.com>
+ * @copyright   Copyright (c) 2016 OA Wu Design
+ */
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon/icomoon.eot?ya0j94');
+    src: url('../fonts/icomoon/icomoon.eot?ya0j94#iefix') format('embedded-opentype'), url('../fonts/icomoon/icomoon.ttf?ya0j94') format('truetype'), url('../fonts/icomoon/icomoon.woff?ya0j94') format('woff'), url('../fonts/icomoon/icomoon.svg?ya0j94#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+    content: "\e986";
+}
+
+* {
+    &,
+    &:after,
+    &:before {
+        vertical-align: top; // @include box-sizing(border-box);
+        // @include selection(rgba(150, 200, 255, 1), rgba(255, 255, 255, 1));
+        @include font-smoothing(antialiased);
+    }
+}
+
+// @include clearfix();
+html {
+    height: 100%;
+    body {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-size: medium;
+        font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif, "微軟正黑體", "Microsoft JhengHei";
+        background: white;
+        color: rgba(50, 50, 50, 0.8);
+        @include font-smoothing(antialiased);
+    }
+}
+
+$header-height: 55px;
+$product-margin: 16px;
+//共用
+.mycontainer {
+    display: inline-block;
+    // border: 1px solid blue;
+    width: 100%;
+    max-width: 960px + 10px * 2;
+    padding: 0 10px;
+    height: 100%;
+    // background-color: rgba(37, 37, 150, 0.2);
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    // border: 1px solid red;
+    display: inline-block;
+    width: 100%;
+    height: $header-height;
+    background-color: rgba(66, 133, 244, 0.8);
+    @include clearfix();
+    +* {
+        margin-top: $header-height;
+    }
+    .mycontainer {
+        >* {
+            height: 100%;
+            // background-color: rgba(255, 0, 0, 0.3);
+            display: inline-block;
+            float: left;
+        }
+        .logo {
+            width: 150px;
+            line-height: 55px;
+            font-size: 30px;
+            color: white;
+            letter-spacing: 3px;
+            text-align: left;
+            // border: 1px solid green;
+        }
+        .search {
+            width: calc(100% - 150px - 35px);
+            // border: 1px solid gold;
+            padding: 0 10px;
+            position: relative;
+            >* {
+                cursor: pointer;
+            }
+            label {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                display: inline-block;
+                height: 35px;
+                line-height: 35px;
+                width: 35px;
+                // border: 1px solid firebrick;
+            }
+            input {
+                // @include input;
+                width: 100%;
+                height: 35px;
+                margin-top: 10px;
+                padding-left: 35px;
+            }
+        }
+        .avatar {
+            width: 35px;
+            line-height: 35px;
+            padding-top: 10px;
+            // border: 1px solid yellow;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+#article {
+    .mycontainer {}
+}
+
+#products {
+    .mycontainer {
+        @include clearfix;
+        // border: 1px solid green;
+        // background-color: rgba(255, 0, 0, 0.3);
+        @include range-width(0,
+        980) {
+            padding: 0;
+        }
+        .product {
+            // border: 1px solid firebrick;
+            background-color: rgba(27, 229/5, 114, 0.3);
+            float: left;
+            height: 160px; // margin: $product-margin;
+            @include range-width(0,
+            400px) {
+                width: 100%; //寫法1
+                // &:nth-child(n+2){
+                //     margin-top: 16px;
+                // }
+                //寫法2
+                +* {
+                    margin-top: 16px;
+                }
+            }
+            @include range-width(400px,
+            500px) {
+                width: calc((100% - 16px / 2) / 2); // &:nth-child(2n+2){
+                &:nth-child(even) {
+                    margin-left: 8px;
+                }
+                &:nth-child(n+3) {
+                    margin-top: 16px;
+                }
+            }
+            @include range-width(500px) {
+                width: calc(100% / 3 - (#{$product-margin} *2)/ 3);
+                &:nth-child(3n+2),
+                &:nth-child(3n+3) {
+                    // background-color: rgba(255, 229, 255, 0.3);
+                    margin-left: $product-margin;
+                }
+                &:nth-child(n+4) {
+                    margin-top: 16px;
+                }
+            }
+        }
+    }
+}
+
+#products2 {
+    .mycontainer {
+        @include clearfix;
+        .product2 {
+            float: left;
+            // border: 1px solid firebrick;
+            background-color: rgba(27, 229, 114, 0.3);
+            @include range-width(0,
+            400px) {
+                width: 100%;
+              +*{
+                  margin-top: #{$product-margin};
+                }
+
+
+            }
+            @include range-width(400px,
+            650px) {
+                &:nth-child(n) {
+                    width: calc(100% / 2 - #{$product-margin} /2 *1);
+                }
+                &:nth-child(even) {
+                    margin-left: #{$product-margin};
+                }
+                &:nth-child(n+3) {
+                    margin-top: #{$product-margin};
+                }
+            }
+            @include range-width(650px) {
+                &:nth-child(5n+1),
+                &:nth-child(5n+2),
+                &:nth-child(5n+3) {
+                    width: calc(100% / 3 - #{$product-margin} /2 * 3);
+                }
+                &:nth-child(5n+1),
+                &:nth-child(5n+2),
+                &:nth-child(5n+3) {
+                    margin-left: #{$product-margin};
+                }
+                &:nth-child(5n+4),
+                &:nth-child(5n+5) {
+                    width: calc(100% / 3 - #{$product-margin} /2 * 3);
+                }
+                &:nth-child(5n+4) {
+                    margin-left: calc((100% / 3 - #{$product-margin} /2 * 3) / 2);
+                }
+                &:nth-child(5n+5) {
+                    margin-left: #{$product-margin};
+                }
+                &:nth-child(n+4) {
+                    margin-top: #{$product-margin};
+                }
+            }
+        }
+    }
+}
