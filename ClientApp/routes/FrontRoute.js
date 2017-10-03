@@ -11,7 +11,7 @@ export function FrontRoute({ component: Component, ...rest }) {
           <nav className="navbar navbar-default navbar-static-top">
             <div className="container">
               <div className="navbar-header">
-                <Link to="/Template" className="navbar-brand">Front Home</Link>
+                <Link to="/20171003_Cut" className="navbar-brand">Front Home</Link>
               </div>
               <ul className="nav navbar-nav pull-right">
                 <li>
