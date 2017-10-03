@@ -69,9 +69,9 @@ import v16 from './views/Backend/ReactV16/v16'
   */
 export default (
   <Switch>
-    <EmptyRoute path='/' exact component={Template} />
+    {/* <EmptyRoute path='/' exact component={Template} /> */}
     <EmptyRoute path='/20171003_Cut' exact component={Template} />
-    {/* <FrontRoute path='/' exact component={Home} /> */}
+    <FrontRoute path='/' exact component={Home} />
     <FrontRoute path='/Index' exact component={Home} />
     <LoginRoute path='/login' component={Login} />
     <LoginRoute path='/forgot' component={Forgot} />
